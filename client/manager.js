@@ -32,4 +32,24 @@ socket.onmessage = function (message){
     }catch (e){
         console.log("Error: \n" + e);
     }
+
+    if(msg.type === "msg"){
+        let text = document.createTextNode(msg.from + ": " + msg.payload.msg);
+        let message = document.createElement("div").appendChild(text);
+        document.getElementById("container").appendChild(message);
+    }
+
+}
+
+document.getElementById("send").onclick = sendMessage;
+
+export function sendMessage(){
+    let text = document.getElementById("msg").value;
+    socket.send(JSON.stringify({
+        from: "user",
+        to: "server",
+        type: "msg",
+        payload: {msg: text},
+        timestamp: new Date()
+    }));
 }

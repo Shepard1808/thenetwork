@@ -8,7 +8,7 @@ class Client
     private string $Username;
     private WebSocketConnection $socket;
 
-    function __construct($uname, $socket){
+    function __construct($socket,$uname){
         $this->Username = $uname;
         $this->socket = $socket;
     }

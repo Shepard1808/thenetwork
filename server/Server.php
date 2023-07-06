@@ -30,7 +30,7 @@ class Server
         $loop = Loop::get();
 
 
-        $loop->addPeriodicTimer(45.0, function () {
+        /*$loop->addPeriodicTimer(45.0, function () {
 
             foreach ($this->clients as $item){
                 if($item instanceof Client){
@@ -45,18 +45,23 @@ class Server
             echo "checking activity..." . PHP_EOL;
             //verifyExistence($this->clients,$this->responselist);
             $this->responselist = [];
-        });
+        });*/
 
         $websocket = new WebSocketMiddleware([], function (WebSocketConnection $connection) {
             echo "new Connection\n";
-
+            $this->clients[] = new Client($connection,"user");
             $connection->on('message', function (Message $message) use ($connection) {
                 $msg = $this->JSONWorker->decodeJSON($message);
                 if(isset($msg['type'])) {
                     echo $msg['from']. " sent: " . $msg['type']. PHP_EOL;
                     switch ($msg['type']){
-                        default:
+                        case "msg":
+                            sendmsg($this->clients,$msg['from'], $msg['payload']['msg'],$this->JSONWorker);
+                            echo $msg['type']. " => ". $msg['payload']['msg'] . PHP_EOL;
                             break;
+                        default:
+                            var_dump($msg);
+                            break;cd t
                     }
                 }
                 //echo "Received message from client: " . $message . PHP_EOL;
