@@ -1,0 +1,27 @@
+{
+    "name": "florian/server",
+    "autoload": {
+        "psr-4": {
+            "Florian\\Server\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shepard1808",
+            "email": "florian.bartz.28072003@gmail.com"
+        }
+    ],
+    "require": {
+        "react/async": "^4 || ^3 || ^2",
+        "react/cache": "^1.1",
+        "react/dns": "^1.11",
+        "react/event-loop": "^1.4",
+        "ratchet/rfc6455": "^0.3",
+        "react/http": "^1.0",
+        "react/promise": "^3 || ^2.10 || ^1.2",
+        "react/promise-stream": "^1.5",
+        "react/promise-timer": "^1.9",
+        "react/socket": "^1.13",
+        "react/stream": "^1.3"
+    }
+}
