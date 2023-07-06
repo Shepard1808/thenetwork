@@ -14,6 +14,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 include_once "JSONWorker.php";
 include_once "tasks.php";
+include_once "Client.php";
 
 class Server
 {
@@ -32,7 +33,7 @@ class Server
         $loop->addPeriodicTimer(45.0, function () {
 
             foreach ($this->clients as $item){
-                if($item instanceof Node){
+                if($item instanceof Client){
                     $item->getSocket()->send($this->JSONWorker->createJSON("server",$item->getUname(),"heartbeat",[]));
                 }
             }
@@ -42,7 +43,7 @@ class Server
                 sleep(0.01);
             }
             echo "checking activity..." . PHP_EOL;
-            verifyExistence($this->clients,$this->responselist);
+            //verifyExistence($this->clients,$this->responselist);
             $this->responselist = [];
         });
 
