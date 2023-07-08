@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/server/src" isTestSource="false" packagePrefix="Florian\Server\" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/evenement/evenement" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/fig/http-message-util" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/ratchet/rfc6455" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/async" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/child-process" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/http" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/ringcentral/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/voryx/websocketmiddleware" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

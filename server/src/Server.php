@@ -1,20 +1,23 @@
 <?php
 
+namespace Florian\Server;
+
+use Florian\Server\Service\Client;
+use Florian\Server\Service\JSONWorker;
 use Psr\Http\Message\ServerRequestInterface;
 use Ratchet\RFC6455\Messaging\Message;
 use React\EventLoop\Loop;
 use React\Http\HttpServer;
 use React\Http\Message\Response;
-use React\Socket\ConnectionInterface;
 use React\Socket\SocketServer;
 use Voryx\WebSocketMiddleware\WebSocketConnection;
 use Voryx\WebSocketMiddleware\WebSocketMiddleware;
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-include_once "JSONWorker.php";
-include_once "tasks.php";
-include_once "Client.php";
+include_once "Service/JSONWorker.php";
+include_once "Controller/tasks.php";
+include_once "Service/Client.php";
 
 class Server
 {
@@ -25,7 +28,8 @@ class Server
 
     private array $responselist = [];
 
-    function __construct($port){
+    function __construct($port)
+    {
         $this->JSONWorker = new JSONWorker();
         $loop = Loop::get();
 
@@ -49,25 +53,25 @@ class Server
 
         $websocket = new WebSocketMiddleware([], function (WebSocketConnection $connection) {
             echo "new Connection\n";
-            $this->clients[] = new Client($connection,"user");
+            $this->clients[] = new Client($connection, "user");
             $connection->on('message', function (Message $message) use ($connection) {
                 $msg = $this->JSONWorker->decodeJSON($message);
-                if(isset($msg['type'])) {
-                    echo $msg['from']. " sent: " . $msg['type']. PHP_EOL;
-                    switch ($msg['type']){
+                if (isset($msg['type'])) {
+                    echo $msg['from'] . " sent: " . $msg['type'] . PHP_EOL;
+                    switch ($msg['type']) {
                         case "msg":
-                            sendmsg($this->clients,$msg['from'], $msg['payload']['msg'],$this->JSONWorker);
-                            echo $msg['type']. " => ". $msg['payload']['msg'] . PHP_EOL;
+                            sendmsg($this->clients, $msg['from'], $msg['payload']['msg'], $this->JSONWorker);
+                            echo $msg['type'] . " => " . $msg['payload']['msg'] . PHP_EOL;
                             break;
                         default:
                             var_dump($msg);
-                            break;cd t
+                            break;
                     }
                 }
                 //echo "Received message from client: " . $message . PHP_EOL;
             });
 
-            $connection->on('close', function (){
+            $connection->on('close', function () {
                 //function to remove item from array
                 echo "da hat sich jemand verabschiedet";
             });

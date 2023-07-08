@@ -1,5 +1,8 @@
 <?php
-class JSONWorker{
+
+namespace Florian\Server\Service;
+class JsonWorker
+{
 
     public function createJSON(string $from, $to, string $type, array $payload)
     {
@@ -8,6 +11,6 @@ class JSONWorker{
 
     public function decodeJSON($message)
     {
-        return json_decode($message,true);
+        return json_decode($message, true);
     }
 }
