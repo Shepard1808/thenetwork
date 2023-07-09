@@ -17,6 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/dns" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/event-loop" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/http" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/mysql" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise-stream" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/react/promise-timer" />

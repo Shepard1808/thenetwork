@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e318316dace97525515985e7b402862",
+    "content-hash": "222603afef78abdf60a239b797c6f8c8",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -822,6 +822,56 @@
             "time": "2023-04-26T10:29:24+00:00"
         },
         {
+            "name": "react/mysql",
+            "version": "v0.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friends-of-reactphp/mysql.git",
+                "reference": "c36b92f1ede95f49036b6ba1805736f80fa4d4e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friends-of-reactphp/mysql/zipball/c36b92f1ede95f49036b6ba1805736f80fa4d4e0",
+                "reference": "c36b92f1ede95f49036b6ba1805736f80fa4d4e0",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^3.0 || ^2.1 || ^1.1",
+                "php": ">=5.4.0",
+                "react/event-loop": "^1.2",
+                "react/promise": "^3 || ^2.7",
+                "react/promise-stream": "^1.4",
+                "react/promise-timer": "^1.9",
+                "react/socket": "^1.12"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.5",
+                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\MySQL\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async MySQL database client for ReactPHP.",
+            "keywords": [
+                "async",
+                "database",
+                "mysql",
+                "reactphp"
+            ],
+            "support": {
+                "issues": "https://github.com/friends-of-reactphp/mysql/issues",
+                "source": "https://github.com/friends-of-reactphp/mysql/tree/v0.5.7"
+            },
+            "time": "2022-09-15T13:40:17+00:00"
+        },
+        {
             "name": "react/promise",
             "version": "v2.10.0",
             "source": {
@@ -895,16 +945,16 @@
         },
         {
             "name": "react/promise-stream",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "e6d2805e09ad50c4896f65f5e8705fe4ee7731a3"
+                "reference": "87d1399a33926fd5ba28a7647346b71482787502"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/e6d2805e09ad50c4896f65f5e8705fe4ee7731a3",
-                "reference": "e6d2805e09ad50c4896f65f5e8705fe4ee7731a3",
+                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/87d1399a33926fd5ba28a7647346b71482787502",
+                "reference": "87d1399a33926fd5ba28a7647346b71482787502",
                 "shasum": ""
             },
             "require": {
@@ -913,7 +963,7 @@
                 "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.35"
+                "phpunit/phpunit": "^9.5 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -962,19 +1012,15 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise-stream/issues",
-                "source": "https://github.com/reactphp/promise-stream/tree/v1.5.0"
+                "source": "https://github.com/reactphp/promise-stream/tree/v1.6.0"
             },
             "funding": [
                 {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/clue",
-                    "type": "github"
+                    "url": "https://opencollective.com/reactphp",
+                    "type": "open_collective"
                 }
             ],
-            "time": "2022-09-09T11:42:18+00:00"
+            "time": "2023-07-07T10:11:54+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -1388,7 +1434,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-pdo": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
 }

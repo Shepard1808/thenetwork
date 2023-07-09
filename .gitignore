@@ -1,2 +1,4 @@
 server/vendor
-server/src/Service/data.ini
+client/Service/data.ini
+.idea
+client/Service/insert_users.php

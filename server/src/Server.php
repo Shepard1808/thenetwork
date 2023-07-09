@@ -24,32 +24,11 @@ class Server
 
 
     private array $clients = [];
-    private JSONWorker $JSONWorker;
-
-    private array $responselist = [];
-
-    function __construct($port)
+    private JsonWorker $JSONWorker;
+        function __construct($port)
     {
         $this->JSONWorker = new JSONWorker();
         $loop = Loop::get();
-
-
-        /*$loop->addPeriodicTimer(45.0, function () {
-
-            foreach ($this->clients as $item){
-                if($item instanceof Client){
-                    $item->getSocket()->send($this->JSONWorker->createJSON("server",$item->getUname(),"heartbeat",[]));
-                }
-            }
-
-            echo "heartbeat sent" . PHP_EOL;
-            for($i = 0; $i < 1000; $i++) {
-                sleep(0.01);
-            }
-            echo "checking activity..." . PHP_EOL;
-            //verifyExistence($this->clients,$this->responselist);
-            $this->responselist = [];
-        });*/
 
         $websocket = new WebSocketMiddleware([], function (WebSocketConnection $connection) {
             echo "new Connection\n";
@@ -68,11 +47,9 @@ class Server
                             break;
                     }
                 }
-                //echo "Received message from client: " . $message . PHP_EOL;
             });
 
             $connection->on('close', function () {
-                //function to remove item from array
                 echo "da hat sich jemand verabschiedet";
             });
 
