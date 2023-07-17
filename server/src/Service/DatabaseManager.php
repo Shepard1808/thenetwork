@@ -1,6 +1,6 @@
 <?php
 
-namespace Service;
+namespace Florian\Server\Service;
 
 
 use PDO;
@@ -8,7 +8,6 @@ use PDO;
 class DatabaseManager
 {
     private PDO $PDO;
-
 
     public function __construct()
     {
@@ -45,12 +44,11 @@ class DatabaseManager
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $token = $this->genToken();
-        echo "INSERT INTO client (token,username,password) VALUES ($token,$username,$password);" . PHP_EOL;
         $stmt = $this->PDO->prepare("INSERT INTO client (token,username,password) VALUES (?,?,?);");
         $stmt->execute([$token,$username,$password]);
     }
 
-    private function genToken()
+    private function genToken(): string
     {
         $chars = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

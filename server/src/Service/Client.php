@@ -12,6 +12,7 @@ class Client
 {
 
     private string $Username;
+    private string $token;
     private WebSocketConnection $socket;
     private int $status;
 

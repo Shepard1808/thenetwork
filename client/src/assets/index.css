@@ -1,0 +1,64 @@
+body{
+    background-color: #121212;
+    color: #01B4CC;
+    font-family: sans-serif;
+}
+
+.loginframe{
+    background-color: #404040;
+    opacity: 0.7;
+    width:40%;
+    height:40%;
+    margin-top: 250px;
+    margin-left: 600px;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 300;
+}
+
+
+.username{
+    margin-right: 22px;
+}
+
+.email, .password, .uname{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.EmailI{
+    margin-left: 16px;
+}
+
+
+.buttons{
+    margin-top: 125px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sButton, .rButton{
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #01B4CC;
+    color: #FFFFFF;
+    border-color: #01B4CC;
+}
+
+input{
+    background-color: #404040;
+    color: #01B4CC;
+    height: 25px;
+    border-radius: 5px;
+}
+
+p{
+    margin: 0;
+    height: 25px;
+}

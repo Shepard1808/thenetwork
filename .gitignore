@@ -1,5 +1,3 @@
 server/vendor
-client/Service/data.ini
+server/src/Service/data.ini
 .idea
-client/Service/insert_users.php
-client/Service/tests.php

@@ -1,8 +1,8 @@
 <?php
 
-use Service\DatabaseManager;
+use Florian\Server\Service\DatabaseManager;
 
-    if(isset($_GET['token'])){
+if(isset($_GET['token'])){
         include_once "chat.html";
     }else{
         if(isset($_GET['action'])){
