@@ -20,13 +20,15 @@ class DatabaseManager
     }
 
     public function getUsers(){
-        return $this->PDO->exec("SELECT username,token FROM client");
+        $stmt =  $this->PDO->prepare("SELECT username,token FROM client");
+        $stmt->execute([]);
+        return $stmt->fetchAll();
     }
 
     public function tryLogin($uname, $password)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->PDO->query("SELECT token,username FROM client WHERE username = ? AND `password` = ?;");
+        $stmt = $this->PDO->prepare("SELECT token,username FROM client WHERE username = ? AND `password` = ?;");
         $stmt->execute([$uname,$password]);
         return $stmt->fetch();
     }

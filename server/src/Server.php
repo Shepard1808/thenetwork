@@ -22,7 +22,6 @@ include_once "Service/Client.php";
 class Server
 {
 
-
     private array $clients = [];
     private JsonWorker $JSONWorker;
         function __construct($port)
