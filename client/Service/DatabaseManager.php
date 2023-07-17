@@ -27,20 +27,30 @@ class DatabaseManager
 
     public function tryLogin($uname, $password)
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->PDO->prepare("SELECT token,username FROM client WHERE username = ? AND `password` = ?;");
-        $stmt->execute([$uname,$password]);
-        return $stmt->fetch();
+        $stmt = $this->PDO->prepare("SELECT * FROM client WHERE username = ?;");
+        $stmt->execute([$uname]);
+        $rs = $stmt->fetch();
+        if($rs === null){
+            return null;
+        }
+        if(password_verify($password,$rs['password'])){
+            return $rs;
+        }else{
+            return null;
+        }
+
     }
 
-    public function insertUser($username,$password){
+    public function insertUser($username,$password): void
+    {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $token = $this->genToken();
-        echo "INSERT INTO client (token,username,password) VALUES ($token,$username,$password);";
-        $this->PDO->exec("INSERT INTO client (token,username,password) VALUES ($token,$username,`$password`);");
+        echo "INSERT INTO client (token,username,password) VALUES ($token,$username,$password);" . PHP_EOL;
+        $stmt = $this->PDO->prepare("INSERT INTO client (token,username,password) VALUES (?,?,?);");
+        $stmt->execute([$token,$username,$password]);
     }
 
-    private function genToken(): string
+    private function genToken()
     {
         $chars = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
