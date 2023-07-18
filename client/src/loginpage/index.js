@@ -21,6 +21,23 @@ socket.onmessage = function (message) {
     }
 
 }
+window.onload  = () => {
+    document.getElementById('submitButton').onclick = () => {
+        let uname = document.getElementById('username').value;
+        let pw = document.getElementById('password').value;
+        if (pw !== null && uname !== null) {
+            socket.send(JSON.stringify({
+                from: "client",
+                to: "server",
+                type: "login",
+                payload: {uname: uname, password: pw},
+                timestamp: new Date()
+            }));
+        } else {
+            alert("fill all fields");
+        }
+    }
+}
 
 setInterval(function(){
     if(socket.readyState > 1){

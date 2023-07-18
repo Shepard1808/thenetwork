@@ -3,6 +3,7 @@
 namespace Florian\Server;
 
 use Florian\Server\Service\Client;
+use Florian\Server\Service\DatabaseManager;
 use Florian\Server\Service\JSONWorker;
 use Psr\Http\Message\ServerRequestInterface;
 use Ratchet\RFC6455\Messaging\Message;
@@ -23,14 +24,15 @@ class Server
 {
 
     private array $clients = [];
+    private DatabaseManager $dataController;
     private JsonWorker $JSONWorker;
         function __construct($port)
     {
-        $this->JSONWorker = new JSONWorker();
+        $this->ini();
         $loop = Loop::get();
 
         $websocket = new WebSocketMiddleware([], function (WebSocketConnection $connection) {
-            echo "new Connection\n";
+            echo "new Connection" . PHP_EOL;
             $this->clients[] = new Client($connection, "user");
             $connection->on('message', function (Message $message) use ($connection) {
                 $msg = $this->JSONWorker->decodeJSON($message);
@@ -39,17 +41,19 @@ class Server
                     switch ($msg['type']) {
                         case "msg":
                             sendmsg($this->clients, $msg['from'], $msg['payload']['msg'], $this->JSONWorker);
-                            echo $msg['type'] . " => " . $msg['payload']['msg'] . PHP_EOL;
+                            break;
+                        case "login":
+                            $rs = $this->dataController->tryLogin($msg['payload']['uname'], $msg['payload']['password']);
+
                             break;
                         default:
-                            var_dump($msg);
                             break;
                     }
                 }
             });
 
             $connection->on('close', function () {
-                echo "da hat sich jemand verabschiedet";
+                echo "Disconnected" . PHP_EOL;
             });
 
         });
@@ -64,5 +68,9 @@ class Server
         $loop->run();
     }
 
+    function ini(){
+       $this->dataController = new DatabaseManager();
+       $this->JSONWorker = new JSONWorker();
+    }
 
 }

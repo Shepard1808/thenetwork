@@ -1,24 +1,26 @@
+<!doctype html>
 <html lang="de">
 <head>
-  <link rel="stylesheet" href="assets/index.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <title>Chat</title>
+    <link rel="stylesheet" href="assets/index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Chat</title>
 </head>
 <body>
-<div class="loginframe">
-  <h1 class="frametag">Login</h1>
+<script src="loginpage/index.js"></script>
+<div class="loginFrame">
+    <h1 class="frameTag">Login</h1>
     <div class="uname">
-      <p>Benutzername: </p>
-      <input class="username" name="username">
-      <i class="bx bx-user"></i>
+        <p>Benutzername: </p>
+        <input class="username" id="username">
+        <i class="bx bx-user"></i>
     </div>
     <div class="password">
-      <p>Passwort: </p>
-      <input type="password" required name="password">
-      <i class="bx bx-key"></i>
+        <p>Passwort: </p>
+        <input type="password" id="password">
+        <i class="bx bx-key"></i>
     </div>
     <div class="buttons">
-      <button type="submit" class="sButton" name="LogIn">Einloggen <i class="bx bx-send"></i></button>
+        <button id="submitButton" class="sButton">Einloggen <i class="bx bx-send"></i></button>
     </div>
 </div>
 </body>
